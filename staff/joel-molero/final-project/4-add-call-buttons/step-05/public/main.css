@@ -1,0 +1,12 @@
+body {
+  font-family: sans-serif;
+}
+
+#localVideo {
+  height: 160px;
+}
+
+#remoteVideo {
+  height: 260px;
+}
+
