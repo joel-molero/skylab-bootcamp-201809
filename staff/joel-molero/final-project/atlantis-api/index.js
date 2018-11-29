@@ -30,7 +30,7 @@ mongoose.connect(MONGO_URL, { useNewUrlParser: true, useCreateIndex: true })
         // http.createServer(app).listen(port);
         // https.createServer(options, app).listen(httpsPort);
 
-        const server = require('http').Server(app)
+        const server = http.Server(app)
 
         app.use(cors)
         app.use('/api', router)
