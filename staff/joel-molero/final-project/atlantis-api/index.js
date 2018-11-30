@@ -4,7 +4,8 @@ const mongoose = require('mongoose')
 const express = require('express')
 const package = require('./package.json')
 const router = require('./routes')
-const cors = require('./utils/cors')
+//const cors = require('./utils/cors')
+const cors = require('cors')
 const { User } = require('./data')
 const fs = require('fs')
 const http = require('http')
@@ -22,17 +23,16 @@ mongoose.connect(MONGO_URL, { useNewUrlParser: true, useCreateIndex: true })
 
         const app = express()
 
+        // SEE https://engineering.circle.com/https-authorized-certs-with-node-js-315e548354a2
         const options = { 
-            key: fs.readFileSync('./ssl/rtc-video-room-key.pem'),
-            cert: fs.readFileSync('./ssl/rtc-video-room-cert.pem')
+            key: fs.readFileSync('./ssl/server-key.pem'), 
+            cert: fs.readFileSync('./ssl/server-crt.pem'), 
+            ca: fs.readFileSync('./ssl/ca-crt.pem'), 
         }
-
-        // http.createServer(app).listen(port);
-        // https.createServer(options, app).listen(httpsPort);
 
         const server = https.Server(options, app)
 
-        app.use(cors)
+        app.use(cors())
         app.use('/api', router)
 
         const io = sio(server)
