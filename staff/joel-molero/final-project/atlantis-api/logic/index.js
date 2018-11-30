@@ -1,4 +1,4 @@
-const { User } = require('../data')
+const { User, Message } = require('../data')
 const { AlreadyExistsError, AuthError, NotAllowedError, NotFoundError } = require('../errors')
 const validate = require('../utils/validate')
 
@@ -41,7 +41,28 @@ const logic = {
 
             return user
         })()
+    },
+
+    postMessage(message) {
+        validate([{ key: 'message', value: message, type: String }])
+
+        return (async () => {
+            message = new Message({ message })
+
+            await message.save()
+        })()
+    },
+
+    getMessage(message) {
+
+        return (async () => {
+            const message = await Message.find({}).lean()
+
+            return message
+        })()
     }
+
+
 }
 
 module.exports = logic

@@ -54,12 +54,41 @@ const logic = {
             })
     },
 
+    addMessage(message) {
+        if (typeof message !== 'string') throw TypeError(`${message} is not a string`)
+
+        if (!message.trim()) throw Error('text is empty or blank')
+
+        return fetch(`${this.url}/messages`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify({ message })
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.error) throw Error(res.error)
+            })
+    },
+
+    listMessages(message) {
+        return fetch(`${this.url}/messages`, {
+            method: 'GET',
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.error) throw Error(res.error)
+
+                return res.data
+            })
+    },
+
     get loggedIn() {
         return !!this._userId
     },
 
     logout() {
-        this._postits = []
         this._userId = null
         this._token = null
 

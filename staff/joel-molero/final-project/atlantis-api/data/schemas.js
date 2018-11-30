@@ -25,7 +25,13 @@ const User = new Schema({
     }]
 })
 
+const Message = new Schema({
+    message: {
+        type: String
+    }
+})
+
 module.exports = {
-    User
+    User, Message
 }
 

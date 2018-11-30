@@ -22,22 +22,22 @@ mongoose.connect(MONGO_URL, { useNewUrlParser: true, useCreateIndex: true })
 
         const app = express()
 
-        // const options = { 
-        //     key: fs.readFileSync('./rtc-video-room-key.pem'),
-        //     cert: fs.readFileSync('./rtc-video-room-cert.pem')
-        // }
+        const options = { 
+            key: fs.readFileSync('./ssl/rtc-video-room-key.pem'),
+            cert: fs.readFileSync('./ssl/rtc-video-room-cert.pem')
+        }
 
         // http.createServer(app).listen(port);
         // https.createServer(options, app).listen(httpsPort);
 
-        const server = http.Server(app)
+        const server = https.Server(options, app)
 
         app.use(cors)
         app.use('/api', router)
 
         const io = sio(server)
 
-        // app.disable('x-powered-by');
+        app.disable('x-powered-by');
 
         io.sockets.on('connection', socket => {
             let room = '';
@@ -81,20 +81,20 @@ mongoose.connect(MONGO_URL, { useNewUrlParser: true, useCreateIndex: true })
             });
 
             socket.on('reject', () => socket.emit('full'));
-            // socket.on('leave', () => {
-            //     // sending to all clients in the room (channel) except sender
-            //     socket.broadcast.to(room).emit('hangup');
-            //     socket.leave(room);
-            // });
-            // socket.on('chat', function(data){
-            //     // console.log(data);
-            //     io.sockets.emit('chat', data);
-            // });
+            socket.on('leave', () => {
+                // sending to all clients in the room (channel) except sender
+                socket.broadcast.to(room).emit('hangup');
+                socket.leave(room);
+            });
+            socket.on('chat', function(data){
+                // console.log(data);
+                io.sockets.emit('chat', data);
+            });
 
                 // Handle typing event
-            // socket.on('typing', function(data){
-            //   socket.broadcast.emit('typing', data);
-            // });
+            socket.on('typing', function(data){
+                socket.broadcast.emit('typing', data);
+            });
         })
 
         server.listen(port, () => console.log(`${package.name} ${package.version} up and running on port ${port}`))

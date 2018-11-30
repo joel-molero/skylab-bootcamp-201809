@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import Register from './components/Register'
 import Login from './components/Login'
 import Home from './containers/HomePage'
-import Chat from './containers/ChatContainer'
+import Chat from './components/Chat'
 import Room from './containers/RoomPage'
 import Landing from './components/Landing'
 import logic from './logic'
 import { Route, withRouter, Redirect } from 'react-router-dom'
 
-logic.url = 'http://127.0.0.1:5060/api'
+logic.url = 'https://127.0.0.1:5060/api'
 
 class App extends Component {
     state = { error: null }
@@ -47,6 +47,30 @@ class App extends Component {
 
     handleGoBack = () => this.props.history.push('/')
 
+    handleAddMessage = (message) => {
+        try {
+            logic.addMessage(message)
+                .then(() => {
+                    this.setState({ error: null })
+                })
+                .catch(err => this.setState({ error: err.message }))
+        } catch (err) {
+            this.setState({ error: err.message })
+        }
+    }
+
+    handleListMessage = (message) => {
+        try {
+            logic.listMessages(message)
+                .then(() => {
+                    this.setState({ error: null })
+                })
+                .catch(err => this.setState({ error: err.message }))
+        } catch (err) {
+            this.setState({ error: err.message })
+        }
+    }
+
     render() {
         const { error } = this.state
 
@@ -60,8 +84,8 @@ class App extends Component {
                 <Home />
             </div> : <Redirect to="/" />} />
             
-			<Route path="/chat" render={() => logic.loggedIn ? <Chat /> : <Login />} />
-			<Route path="/r/:room" render={() => logic.loggedIn ? <Room /> : <Login />} />
+			<Route path="/chat" render={() =>  <Chat onAddMessage={this.handleAddMessage} onListMessage={this.handleListMessage}/> } />
+			<Route path="/r/:room" component={Room} />
 			
         </div>
     }

@@ -60,4 +60,34 @@ router.get('/users/:id', [bearerTokenParser, jwtVerifier], (req, res) => {
     }, res)
 })
 
+router.post('/messages', jsonBodyParser, (req, res) => {
+    routeHandler(() => {
+        const { message } = req.body
+        
+        return logic.postMessage(message)
+            .then(() => {
+                res.status(201)
+
+                res.json({
+                    message: `message successfully posted`
+                })
+            })
+    }, res)
+})
+
+router.get('/messages', (req, res) => {
+    routeHandler(() => {
+
+        return logic.getMessage(message)
+            .then(message =>
+                
+                res.json({
+                    data: message
+                })  
+            )
+    }, res)
+})
+
+
+
 module.exports = router

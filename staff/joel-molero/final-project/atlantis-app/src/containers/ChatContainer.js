@@ -6,14 +6,16 @@
 // class ChatContainer extends Component {
 //     constructor(props) {
 //         super(props);
-//         // this.sendChat = this.sendChat.bind(this);
-//         this.socket = io.connect();   // Without THIS boom
-//         // this.chat = this.chat.bind(this);
-//         // this.handleMessageChange = this.handleMessageChange.bind(this);
-//         this.messageHandler = this.messageHandler.bind(this);
-//         this.messageHandler = this.messageHandler.bind(this);
-//         // this.handleUsernameChange = this.handleUsernameChange.bind(this);
+        
+//         this.state = { handleMessage: '' }
+//         this.handleMessageChange = this.handleMessageChange.bind(this);
+//         this.socket = io.connect('http://127.0.0.1:5060');   // Without THIS boom
 //     }
+
+//     handleChange(e) {
+//         this.setState({ handleMessage: e.target.value });
+//     }
+
 //     componentDidMount(){
 //         // Make connection
 //         const socket = this.socket;

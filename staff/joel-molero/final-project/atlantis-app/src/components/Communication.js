@@ -1,7 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
-// import ToggleFullScreen from './ToggleFullScreen';
 
 const Communication = props =>
   <div className="auth">
@@ -35,6 +34,7 @@ const Communication = props =>
         </svg>
       </button>
     </div>
+
     <div className="request-access">
       <p><span className="you-left">You hung up.&nbsp;</span>Send an invitation to join the room.</p>
       <form onSubmit={props.send}>
@@ -42,16 +42,19 @@ const Communication = props =>
         <button className="primary-button">Send</button>
       </form>
     </div>
+
     <div className="grant-access">
       <p>A peer has sent you a message to join the room:</p>
       <div dangerouslySetInnerHTML={props.getContent(props.message)}></div>
       <button onClick={props.handleInvitation} data-ref="reject" className="primary-button">Reject</button>
       <button onClick={props.handleInvitation} data-ref="accept" className="primary-button">Accept</button>
     </div>
+
     <div className="room-occupied">
       <p>Please, try another room!</p>
       <Link  className="primary-button" to="/">OK</Link>
     </div>
+    
     <div className="waiting">
       <p><span>Waiting for someone to join this room:&nbsp;</span><a href={window.location.href}>{window.location.href}</a><br/>
       <span className="remote-left">The remote side hung up.</span></p>

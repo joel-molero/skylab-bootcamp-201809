@@ -1,21 +1,45 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
+import React, { Component } from 'react'
 
-const Chat = props =>
-    <div>
-        <h1>HelloGuorld</h1>
-        <div id="chat-window">
-            <div id="output"></div>
-            <div id="feedback"></div>
-        </div>
-    
-        <input id="message" type="text" placeholder="Message" value={ props.messageHandler } onChange={ props.handleMessageChange }/>
-        <button id="send" onClick={props.sendChat}>Send</button>
-    </div>
+class Chat extends Component {
+    state = { message: '', messages: [] }
 
-Chat.propTypes = {
-    messageHandler: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired
-};
+    handleMessageChange = event => {
+        const message = event.target.value
 
-export default Chat;
+        this.setState({ message })
+    }
+
+    handleSubmit = event => {
+        event.preventDefault()
+
+        const messages = this.state.messages
+
+        const message = this.state.message
+
+        this.props.onAddMessage(message)
+        
+        messages.push(message)
+
+        this.setState({messages})
+    }
+
+    handleListMessage = () => {
+        
+        
+
+        
+
+
+    }
+
+    render() {
+        return <form onSubmit={this.handleSubmit}>
+            <input type="message" placeholder="Type your message here..." onChange={this.handleMessageChange} />
+            <button type="submit">Send</button> <a href="#" onClick={this.props.onGoBack}>back</a>
+            <button onClick={this.handleListMessage}>Retrieve messages</button>
+            {this.state.messages.map(message => <div>{message}</div>)}
+        </form>
+    }
+}
+
+export default Chat
