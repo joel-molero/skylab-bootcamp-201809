@@ -53,12 +53,14 @@ const logic = {
         })()
     },
 
-    getMessage(message) {
+    getMessages() {
 
         return (async () => {
-            const message = await Message.find({}).lean()
+            const messages = await Message.find({}).lean()
 
-            return message
+            debugger
+
+            return messages
         })()
     }
 

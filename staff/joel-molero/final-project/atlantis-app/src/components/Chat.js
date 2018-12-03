@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 class Chat extends Component {
-    state = { message: '', messages: [] }
+    state = { message: '', messages: ['message', 'm2'] }
 
     handleMessageChange = event => {
         const message = event.target.value
@@ -23,22 +23,41 @@ class Chat extends Component {
         this.setState({messages})
     }
 
-    handleListMessage = () => {
-        
-        
+    handleListMessage = event => {
+        event.preventDefault()
+        return Promise.resolve()
+        .then(() => {
+            this.props.onListMessage()
+        })
+        .then(() => {
+            console.log(this.props.messages)
+
+            if(this.props.messages){ 
+
+                const messages = []
+                this.props.messages.forEach(({message}) => {
+                    messages.push(message)
+                })
+                this.setState({messages})
+                }
+
+        })
 
         
-
-
     }
 
+
+
     render() {
-        return <form onSubmit={this.handleSubmit}>
-            <input type="message" placeholder="Type your message here..." onChange={this.handleMessageChange} />
-            <button type="submit">Send</button> <a href="#" onClick={this.props.onGoBack}>back</a>
-            <button onClick={this.handleListMessage}>Retrieve messages</button>
-            {this.state.messages.map(message => <div>{message}</div>)}
-        </form>
+        return <div>
+                <form onSubmit={this.handleSubmit}>
+                    <input type="message" placeholder="Type your message here..." onChange={this.handleMessageChange} />
+                    <button type="submit">Send</button> <a href="#" onClick={this.props.onGoBack}>back</a>
+                    {this.state.messages.map(message => <div>{message}</div>)}
+                    
+                </form>
+                <button onClick={this.handleListMessage}>Retrieve messages</button>
+                </div>
     }
 }
 

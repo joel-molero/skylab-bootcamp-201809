@@ -47,8 +47,9 @@ class App extends Component {
 
     handleGoBack = () => this.props.history.push('/')
 
-    handleAddMessage = (message) => {
+    handleAddMessage = message => {
         try {
+            debugger
             logic.addMessage(message)
                 .then(() => {
                     this.setState({ error: null })
@@ -59,14 +60,17 @@ class App extends Component {
         }
     }
 
-    handleListMessage = (message) => {
+    handleListMessage = () => {
         try {
-            logic.listMessages(message)
-                .then(() => {
-                    this.setState({ error: null })
+            
+            logic.listMessages()
+                .then(res => {
+                    this.setState({ error: null, messages: res })
+                    return res
                 })
                 .catch(err => this.setState({ error: err.message }))
         } catch (err) {
+            
             this.setState({ error: err.message })
         }
     }
@@ -84,7 +88,7 @@ class App extends Component {
                 <Home />
             </div> : <Redirect to="/" />} />
             
-			<Route path="/chat" render={() =>  <Chat onAddMessage={this.handleAddMessage} onListMessage={this.handleListMessage}/> } />
+			<Route path="/chat" render={() =>  <Chat onAddMessage={this.handleAddMessage} onListMessage={this.handleListMessage} messages={this.state.messages}/>  } />
 			<Route path="/r/:room" component={Room} />
 			
         </div>

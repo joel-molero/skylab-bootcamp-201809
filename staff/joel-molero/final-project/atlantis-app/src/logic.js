@@ -72,12 +72,13 @@ const logic = {
             })
     },
 
-    listMessages(message) {
+    listMessages() {
         return fetch(`${this.url}/messages`, {
             method: 'GET',
         })
             .then(res => res.json())
             .then(res => {
+                
                 if (res.error) throw Error(res.error)
 
                 return res.data

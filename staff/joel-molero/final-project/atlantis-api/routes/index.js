@@ -77,15 +77,17 @@ router.post('/messages', jsonBodyParser, (req, res) => {
 
 router.get('/messages', (req, res) => {
     routeHandler(() => {
-
-        return logic.getMessage(message)
-            .then(message =>
+        
+        return logic.getMessages()
+            .then(messages => {
                 
                 res.json({
-                    data: message
-                })  
-            )
+                    data: messages
+                })
+                
+            })
     }, res)
+    
 })
 
 
