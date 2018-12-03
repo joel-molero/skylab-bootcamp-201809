@@ -13,6 +13,16 @@ logic.url = process.env.REACT_APP_API_URL
 class App extends Component {
     state = { error: null }
 
+    componentDidMount() {
+        this.refreshMessages()
+    }
+
+    refreshMessages() {
+        logic.listMessages()
+            .then(res => this.setState({ error: null, messages: res }))
+            .catch(err => this.setState({ error: err.message }))
+    }
+
     handleRegisterClick = () => this.props.history.push('/register')
 
     handleLoginClick = () => this.props.history.push('/login')
@@ -32,7 +42,7 @@ class App extends Component {
     handleLogin = (username, password) => {
         try {
             logic.login(username, password)
-                .then(() =>  this.props.history.push('/home'))
+                .then(() => this.props.history.push('/home'))
                 .catch(err => this.setState({ error: err.message }))
         } catch (err) {
             this.setState({ error: err.message })
@@ -49,28 +59,11 @@ class App extends Component {
 
     handleAddMessage = message => {
         try {
-            debugger
             logic.addMessage(message)
-                .then(() => {
-                    this.setState({ error: null })
-                })
-                .catch(err => this.setState({ error: err.message }))
+                .then(() => logic.listMessages())
+                .then(messages => this.setState({ error: null, messages }))
+                .catch(({ message }) => this.setState({ error: message }))
         } catch (err) {
-            this.setState({ error: err.message })
-        }
-    }
-
-    handleListMessage = () => {
-        try {
-            
-            logic.listMessages()
-                .then(res => {
-                    this.setState({ error: null, messages: res })
-                    return res
-                })
-                .catch(err => this.setState({ error: err.message }))
-        } catch (err) {
-            
             this.setState({ error: err.message })
         }
     }
@@ -82,15 +75,15 @@ class App extends Component {
             <Route exact path="/" render={() => !logic.loggedIn ? <Landing onRegisterClick={this.handleRegisterClick} onLoginClick={this.handleLoginClick} /> : <Redirect to="/home" />} />
             <Route path="/register" render={() => !logic.loggedIn ? <Register onRegister={this.handleRegister} onGoBack={this.handleGoBack} /> : <Redirect to="/home" />} />
             <Route path="/login" render={() => !logic.loggedIn ? <Login onLogin={this.handleLogin} onGoBack={this.handleGoBack} /> : <Redirect to="/home" />} />
-            
+
             <Route path="/home" render={() => logic.loggedIn ? <div>
                 <section><button onClick={this.handleLogoutClick}>Logout</button></section>
                 <Home />
             </div> : <Redirect to="/" />} />
-            
-			<Route path="/chat" render={() =>  <Chat onAddMessage={this.handleAddMessage} onListMessage={this.handleListMessage} messages={this.state.messages}/>  } />
-			<Route path="/r/:room" component={Room} />
-			
+
+            <Route path="/chat" render={() => <Chat onAddMessage={this.handleAddMessage} messages={this.state.messages} />} />
+            <Route path="/r/:room" component={Room} />
+
         </div>
     }
 }
