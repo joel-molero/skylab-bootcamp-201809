@@ -63,6 +63,7 @@ class App extends Component {
                 .then(() => logic.listMessages())
                 .then(messages => this.setState({ error: null, messages }))
                 .catch(({ message }) => this.setState({ error: message }))
+                this.refreshMessages()
         } catch (err) {
             this.setState({ error: err.message })
         }

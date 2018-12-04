@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const bearerTokenParser = require('../utils/bearer-token-parser')
 const jwtVerifier = require('./jwt-verifier')
 const routeHandler = require('./route-handler')
-const io = require('socket.io')
+//const io = require('socket.io')
 
 const jsonBodyParser = bodyParser.json()
 
@@ -90,9 +90,9 @@ router.get('/messages', (req, res) => {
     }, res)
 })
 
-io.on('connection', () => {
-    console.log('a user is connected')
-})
+//io.on('connection', () => {
+//   console.log('a user is connected')
+//})
 
 
 module.exports = router
