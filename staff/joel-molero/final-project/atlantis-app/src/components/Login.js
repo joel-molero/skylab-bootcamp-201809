@@ -25,10 +25,10 @@ class Login extends Component {
 
     render() {
         return <form onSubmit={this.handleSubmit}>
-            <input type="text" placeholder="Username" onChange={this.handleUsernameChange} />
-            <input type="password" placeholder="Password" onChange={this.handlePasswordChange} />
+            <input type="text" className="login-username" placeholder="Username" onChange={this.handleUsernameChange} />
+            <input type="password" className="login-password" placeholder="Password" onChange={this.handlePasswordChange} />
             {/* <button type="submit">Login</button> <a href="/#/">back</a> */}
-            <button type="submit">Login</button> <a href="#" onClick={this.props.onGoBack}>back</a>
+            <button type="submit" className="login-button">Login</button> <a href="#" className="go-back" onClick={this.props.onGoBack}>back</a>
         </form>
     }
 }

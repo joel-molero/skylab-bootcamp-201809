@@ -13,6 +13,7 @@ logic.url = process.env.REACT_APP_API_URL
 class App extends Component {
     state = { error: null }
 
+
     componentDidMount() {
         this.refreshMessages()
     }
@@ -63,7 +64,6 @@ class App extends Component {
                 .then(() => logic.listMessages())
                 .then(messages => this.setState({ error: null, messages }))
                 .catch(({ message }) => this.setState({ error: message }))
-                this.refreshMessages()
         } catch (err) {
             this.setState({ error: err.message })
         }
@@ -78,7 +78,7 @@ class App extends Component {
             <Route path="/login" render={() => !logic.loggedIn ? <Login onLogin={this.handleLogin} onGoBack={this.handleGoBack} /> : <Redirect to="/home" />} />
 
             <Route path="/home" render={() => logic.loggedIn ? <div>
-                <section><button onClick={this.handleLogoutClick}>Logout</button></section>
+                <section className="logout-section"><button className="logout-button" onClick={this.handleLogoutClick}>Logout</button></section>
                 <Home />
             </div> : <Redirect to="/" />} />
 

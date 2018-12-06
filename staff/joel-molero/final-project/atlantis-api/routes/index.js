@@ -81,7 +81,7 @@ router.get('/messages', (req, res) => {
         
         return logic.getMessages()
             .then(messages => {
-                
+                debugger
                 res.json({
                     data: messages
                 })

@@ -2,12 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import store from './store';
-import { HashRouter, Switch, Route } from 'react-router-dom';
-import Home from './containers/HomePage'
-import Room from './containers/RoomPage'
-import NotFound from './components/NotFound'
+import { HashRouter } from 'react-router-dom';
 import styles from './app.css'
-import Chat from './containers/ChatContainer'
 import App from './App.js'
 
 

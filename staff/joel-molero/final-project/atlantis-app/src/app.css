@@ -1,45 +1,213 @@
-body,
-input,
+html, body {min-height: 100%; max-height: 100%; min-width:100%; max-width: 100%}
+div .home {
+    background: linear-gradient(to bottom, #ffffff 27%,#595959 100%);
+    font-size: 1.6vw;
+    font-family: Sans-Serif;
+    height: 100vh;
+}
 button {
     font-size: 1.6vw;
     margin: 0;
     font-family: Sans-Serif;
+    max-height: 10px
+    
+}
+button.landing-button {
+    padding: 30px 30px;
+    border-radius: 5px;
+    font-size: 1.3em;
+    font-family: Sans-Serif;
+    text-justify: auto;
+    max-height: none;
+    color:white;
+    background-color: rgb(71, 107, 173);
+    transition-duration: 0.4s
+}
+button.logout-button {
+    margin-top: 16px;
+    margin-left: 16px;
+    padding: 10px 10px 10px 13px;
+    font-size: 15px;
+    color: white;
+    background-color: rgb(133, 23, 23);
+    text-justify: center;
+    max-height: none;
+    border:none
+    
+}
+.landing-section {
+    background-image: url("https://i.ibb.co/qMDvwZC/mac.png");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.landing-title {
+    padding-top: 5%
+}
+.landing-buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    
+}
+
+.landing-button-wrapper {
+    margin-left: 10em;
+    margin-right: 10em;
+    margin-top: 2em
+}
+.landing-button:hover {
+    background-color: rgb(43, 78, 143);
+    transition-duration: 0.7
+    
+}
+p {
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px 
+}
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px
+}
+.home,
+
+div .used-rooms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px 
+}
+div.recently-used-rooms {
+    max-width: 70%;
+    margin: 0 auto;
+    padding-top: 50px
+}
+div.input-w-buttons {
+    width: 50%;
+    margin: 0 auto;
+}
+input {
+    border: 2px;
+    border-bottom: solid 2px #4c4c4f;
+    font-size: 1em;
+    text-align: center;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    padding: .4em 0;
+    margin: 2ex 0;
+    max-width: 18em;
 }
 @media(max-width: 1024px) {
     body,
     input,
+    .landing-title {
+        text-align: center;
+        font-family: Sans-Serif;
+    }
     button {
         font-size: 1em;
+        margin: 0;
+        font-family: Sans-Serif;
+        max-height: 10px
+        
+    }
+    button.landing-button {
+        padding: 15px 15px;
+        border-radius: 5px;
+        font-size: 1.3em;
+        text-justify: auto;
+        max-height: none;
+        color:white;
+        background-color: rgb(71, 173, 79);
+        transition-duration: 0.4s
+    }
+    button.logout-button {
+        margin-top: 0px;
+        margin-left: 0px;
+        padding: 10px 10px 10px 13px;
+        font-size: 15px;
+        color: white;
+        background-color: rgb(133, 23, 23);
+        text-justify: center;
+        max-height: none;
+        border: none
+        
+    }
+    .landing-button-wrapper {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 6em;
+    }
+    p {
+        font-size: 3em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 20px 
+    }
+    h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        margin-top: -20px
+    }
+    .home,
+    div .used-rooms {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 20px;
+        font-size: 3em
+    }
+    a.primary-button {
+        padding: 20px;
+        font-size: 1.5em
+    }
+    div.input-w-buttons {
+        width: 50%;
+        margin: 0 auto;
+    }
+    a.recent-room {
+        padding: 3px;
+        font-size: 12px;
+    }
+    input {
+        border: 2px;
+        border-bottom: solid 2px #4c4c4f;
+        font-size: 2em;
+        text-align: center;
+        background-color: white;
+        color: rgb(0, 0, 0);
+        padding: .7em 0;
+        margin: 2ex 0;
+        max-width: 18em;
     }
 }
 input:focus,
 button:focus {
     outline:0;
 }
-input[type=text] {
-    border: none;
-    border-bottom: solid 2px #4c4c4f;
-    font-size: 1em;
-    background-color: transparent;
-    color: #000;
-    padding: .4em 0;
-    margin: 2ex 0;
-    width: 100%;
-    max-width: 18em;
-    display: block;
+
+
+.logout-section {
+    background-color: black;
+    height: 70px;
 }
-.home {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
+
 .call-exit-button,
 .hangup-button,
 .audio-button-true,
 .audio-button-false,
 .video-button-true,
-.video-button-false,
-.fullscreen-button {
+.video-button-false {
     width: 3em;
     height: 3em;
     border-radius: 50%;
@@ -52,16 +220,16 @@ input[type=text] {
     transition: all .2s ease-out;
     margin: 0 .4em;
     cursor: pointer;
+    max-height: none
 }
 .call-exit-button:hover,
 .hangup-button:hover,
 .audio-button-true:hover,
 .audio-button-false:hover,
 .video-button-true:hover,
-.video-button-false:hover,
-.fullscreen-button:hover {
+.video-button-false:hover {
     box-shadow: .4ex .4ex 3em #666;
-    background: rgba(64, 124, 247, 1)
+    background: rgb(247, 64, 64)
 }
 .you-left,
 .remote-left,
@@ -69,39 +237,10 @@ input[type=text] {
 .audio-button-true .on,
 .video-button-true .on,
 .video-button-false .off,
-.fullscreen-button .on,
 .room-occupied {
 	display: none;
 }
-:-webkit-full-screen .fullscreen-button .on {
-    display: block;
-}
-:-moz-full-screen .fullscreen-button .on {
-    display: block;
-}
-:-ms-fullscreen .fullscreen-button .on {
-    display: block;
-}
-:fullscreen .fullscreen-button .on { /* spec */
-    display: block;
-}
-:-webkit-full-screen .fullscreen-button .off {
-    display: none;
-}
-:-moz-full-screen .fullscreen-button .off {
-    display: none;
-}
-:-ms-fullscreen .fullscreen-button .off {
-    display: none;
-}
-:fullscreen .fullscreen-button .off { /* spec */
-    display: none;
-}
-/* deeper elements */
-:-webkit-full-screen video {
-  width: 100%;
-  height: 100%;
-}
+
 .guest-hangup + .auth .you-left {
     display: inline;
 }
@@ -111,8 +250,17 @@ input[type=text] {
 	display: block;
 }
 .recent-room {
-    color: #4285F4;
+    color: rgb(255, 255, 255);
     margin: 1ex 1em;
+    text-decoration: none;
+    background-color: rgb(133, 23, 23);
+    text-align: center;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    display: inline-flex;
 }
 .remote-video {
     display: block;
@@ -126,6 +274,8 @@ input[type=text] {
     object-fit: cover;
     transition: all .3s;
 }
+
+/* when the connection has been established move into the left top corner */
 .established .local-video {
 	margin: 10px;
     max-height: 17%;
@@ -154,13 +304,12 @@ input[type=text] {
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
-    background-color: #4285F4;
+    background-color: rgb(66, 244, 176);
     border: none;
     color: white;
     font-size: 0.8em;
-    margin: 0 5px 20px 5px;
+    margin: 2.5ex;
     width: 8em;
-    line-height: 3ex;
     padding: 1ex 0.7em;
     text-align: center;
     -webkit-box-shadow: 1px 1px 5px 0 rgba(0,0,0,.5);
@@ -187,7 +336,7 @@ input[type=text] {
     padding: 0 1em;
     box-sizing: border-box;
     width: 100%;
-    background: rgba(0, 0, 0, .8);
+    background: rgba(75, 69, 69, 0.8);
     /* Initially we don't want any height, and we want the contents to be hidden */
     max-height: 0;
     transition: max-height .3s ease;
