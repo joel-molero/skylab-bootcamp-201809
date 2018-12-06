@@ -10,8 +10,10 @@ const Home = props =>
       <p>Please enter a room name.</p>
       <div className="input-w-buttons">
         <input type="text" name="room" value={ props.roomId } onChange={props.handleChange} pattern="^\w+$" maxLength="10" required autoFocus title="Room name should only contain letters or numbers."/>
-        <Link className="primary-button" to={ '/r/' + props.roomId }>Join</Link>
-        <Link className="primary-button" to={ '/r/' + props.defaultRoomId }>Random</Link>
+        <div className="home-buttons">
+          <Link className="primary-button" to={ '/r/' + props.roomId }>Join</Link>
+          <Link className="primary-button" to={ '/r/' + props.defaultRoomId }>Random</Link>
+        </div>
       </div>
       <div className="recently-used-rooms">
         { props.rooms.length !== 0 && <div className="used-rooms">Recently used rooms:</div> }

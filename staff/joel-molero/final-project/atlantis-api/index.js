@@ -86,15 +86,10 @@ mongoose.connect(MONGO_URL, { useNewUrlParser: true, useCreateIndex: true })
                 socket.broadcast.to(room).emit('hangup');
                 socket.leave(room);
             });
-            socket.on('chat', function(data){
-                // console.log(data);
+            socket.on('chat', function(){
                 io.sockets.emit('chat', data);
             });
 
-                // Handle typing event
-            socket.on('typing', function(data){
-                socket.broadcast.emit('typing', data);
-            });
         })
 
         server.listen(port, () => console.log(`${package.name} ${package.version} up and running on port ${port}`))

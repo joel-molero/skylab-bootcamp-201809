@@ -81,7 +81,6 @@ router.get('/messages', (req, res) => {
         
         return logic.getMessages()
             .then(messages => {
-                debugger
                 res.json({
                     data: messages
                 })
@@ -90,9 +89,9 @@ router.get('/messages', (req, res) => {
     }, res)
 })
 
-//io.on('connection', () => {
-//   console.log('a user is connected')
-//})
+/* io.on('connection', () => {
+   
+}) */
 
 
 module.exports = router

@@ -1,18 +1,20 @@
-html, body {min-height: 100%; max-height: 100%; min-width:100%; max-width: 100%}
+html, body {min-height: 100%; max-height: 100%; min-width:100%; max-width: 100%; margin: 0}
 div .home {
     background: linear-gradient(to bottom, #ffffff 27%,#595959 100%);
     font-size: 1.6vw;
     font-family: Sans-Serif;
     height: 100vh;
 }
+div.home-buttons {
+    display: inline-flex;
+}
 button {
     font-size: 1.6vw;
     margin: 0;
     font-family: Sans-Serif;
     max-height: 10px
-    
 }
-button.landing-button {
+button.landing-button-register {
     padding: 30px 30px;
     border-radius: 5px;
     font-size: 1.3em;
@@ -21,7 +23,20 @@ button.landing-button {
     max-height: none;
     color:white;
     background-color: rgb(71, 107, 173);
-    transition-duration: 0.4s
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+button.landing-button-login {
+    padding: 30px 30px;
+    border-radius: 5px;
+    font-size: 1.3em;
+    font-family: Sans-Serif;
+    text-justify: auto;
+    max-height: none;
+    color:white;
+    background-color: rgb(71, 107, 173);
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
 button.logout-button {
     margin-top: 16px;
@@ -32,8 +47,55 @@ button.logout-button {
     background-color: rgb(133, 23, 23);
     text-justify: center;
     max-height: none;
-    border:none
+    border:none;
+    cursor: pointer;
     
+}
+button.auth-button {
+    margin-top: 16px;
+    margin-left: 16px;
+    padding: 10px 10px 10px 13px;
+    font-size: 15px;
+    color: white;
+    background-color: rgb(133, 23, 23);
+    text-justify: center;
+    max-height: none;
+    border:none;
+    cursor: pointer;
+}
+button.send-chat {
+    padding: 10px 10px 10px 13px;
+    border-radius: 5px;
+    font-size: 1.3em;
+    font-family: Sans-Serif;
+    text-justify: auto;
+    max-height: none;
+    color:white;
+    background-color: rgb(71, 107, 173);
+    text-decoration: none;
+    margin-left:10px
+}
+a.go-back {
+    padding: 10px 10px 10px 13px;
+    border-radius: 5px;
+    font-size: 1.3em;
+    font-family: Sans-Serif;
+    text-justify: auto;
+    max-height: none;
+    color:white;
+    background-color: rgb(71, 107, 173);
+    text-decoration: none
+}
+a.recent-room {
+    padding: 8px;
+    font-size: 14px;
+    width: 80px;
+}
+form.auth-form {
+    top: 40%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .landing-section {
     background-image: url("https://i.ibb.co/qMDvwZC/mac.png");
@@ -57,10 +119,13 @@ button.logout-button {
     margin-right: 10em;
     margin-top: 2em
 }
-.landing-button:hover {
+.landing-button-login:hover {
     background-color: rgb(43, 78, 143);
-    transition-duration: 0.7
-    
+    transition-duration: 0.7   
+}
+.landing-button-register:hover {
+    background-color: rgb(43, 78, 143);
+    transition-duration: 0.7;
 }
 p {
     font-size: 1.1em;
@@ -91,6 +156,7 @@ div.recently-used-rooms {
 div.input-w-buttons {
     width: 50%;
     margin: 0 auto;
+
 }
 input {
     border: 2px;
@@ -103,12 +169,44 @@ input {
     margin: 2ex 0;
     max-width: 18em;
 }
+.input-chat {
+    width: 55vw;
+    margin-top: 20px;
+    max-width: none;
+
+}
+div.auth-wrapper {
+    background: linear-gradient(to bottom, #ffffff 27%,#595959 100%);
+    height: 100vh;
+    font-family: Sans-Serif;
+}
+div.chat-wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-form {
+    background-color: rgb(70, 66, 66);
+    width: 70%;
+    margin: 10px;
+    line-height: 20px;
+    color: rgb(196, 175, 175);
+    font-size: 1em;
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
 @media(max-width: 1024px) {
     body,
-    input,
     .landing-title {
         text-align: center;
         font-family: Sans-Serif;
+        position: absolute;
+        top: 5%
     }
     button {
         font-size: 1em;
@@ -117,7 +215,7 @@ input {
         max-height: 10px
         
     }
-    button.landing-button {
+    button.landing-button-register {
         padding: 15px 15px;
         border-radius: 5px;
         font-size: 1.3em;
@@ -125,7 +223,28 @@ input {
         max-height: none;
         color:white;
         background-color: rgb(71, 173, 79);
-        transition-duration: 0.4s
+        transition-duration: 0.4s;
+        position: absolute;
+        top: 40%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+        min-width: 40px
+    }
+    button.landing-button-login {
+        padding: 15px 15px;
+        border-radius: 5px;
+        font-size: 1.3em;
+        text-justify: auto;
+        max-height: none;
+        color:white;
+        background-color: rgb(71, 173, 79);
+        transition-duration: 0.4s;
+        position: absolute;
+        top: 40%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+        width: 110px
+
     }
     button.logout-button {
         margin-top: 0px;
@@ -139,10 +258,34 @@ input {
         border: none
         
     }
+    button.auth-button {
+        margin-top: 0px;
+        margin-left: 0px;
+        padding: 20px 20px 20px 23px;
+        font-size: 15px;
+        color: white;
+        background-color: rgb(133, 23, 23);
+        text-justify: center;
+        max-height: none;
+        border:none;
+        cursor: pointer;
+    }
+    a.go-back {
+        padding: 20px 20px 20px 23px;
+        border-radius: 5px;
+        font-size: 1.3em;
+        font-family: Sans-Serif;
+        text-justify: auto;
+        max-height: none;
+        color:white;
+        background-color: rgb(71, 107, 173);
+        transition-duration: 0.4s;
+        text-decoration: none
+    }
     .landing-button-wrapper {
         margin-left: 0;
         margin-right: 0;
-        margin-top: 6em;
+        margin-top: 40%;
     }
     p {
         font-size: 3em;
@@ -173,10 +316,13 @@ input {
     div.input-w-buttons {
         width: 50%;
         margin: 0 auto;
+        padding: 0;
+        align-items: center;
     }
     a.recent-room {
         padding: 3px;
         font-size: 12px;
+        width: 20px
     }
     input {
         border: 2px;
@@ -188,6 +334,9 @@ input {
         padding: .7em 0;
         margin: 2ex 0;
         max-width: 18em;
+    }
+    div.home-buttons {
+        display: block;
     }
 }
 input:focus,
@@ -245,8 +394,7 @@ button:focus {
     display: inline;
 }
 .full .room-occupied,
-.host-hangup + .auth .remote-left,
-.recent-room {
+.host-hangup + .auth .remote-left {
 	display: block;
 }
 .recent-room {
@@ -255,12 +403,12 @@ button:focus {
     text-decoration: none;
     background-color: rgb(133, 23, 23);
     text-align: center;
-    padding: 2px 6px 2px 6px;
+    padding: 4px 6px;
     border-top: 1px solid #CCCCCC;
     border-right: 1px solid #333333;
     border-bottom: 1px solid #333333;
     border-left: 1px solid #CCCCCC;
-    display: inline-flex;
+    display: inline-block;
 }
 .remote-video {
     display: block;

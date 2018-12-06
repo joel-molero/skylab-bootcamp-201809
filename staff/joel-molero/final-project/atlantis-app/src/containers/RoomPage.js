@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import MediaContainer from './MediaContainer'
 import CommunicationContainer from './CommunicationContainer'
+import Chat from '../components/Chat'
 import { connect } from 'react-redux'
 import store from '../store'
 import io from 'socket.io-client'
