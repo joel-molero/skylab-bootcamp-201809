@@ -10,6 +10,8 @@ This is an aplication which allows the user to communicate with another person v
 
 The Atlantis App allows peer-to-peer video communication without the need of any external programs. With the use os WebRTC technology a connection is made browser to browser.
 
+It uses ```socket.io``` to handle the handshaking between browsers and a simple implementation of Redux to handle the states of the video room.
+
 ## Technical description
 -----
 Atlantis is a web application meant to run within a browser environment. It consists of a ReactJS frontend that connects to the webRTC APIs:
@@ -23,9 +25,14 @@ RTCIceCandidate: Represents a candidate Internet Connectivity Establishment conf
 These APIs expose the most used functions, for example:
 
 getUserMedia()  getTracks()   setRemoteDescription()
+-
 
 
 
 ## Functional Diagram
 
-![](./images/Functional_diagram.png)
+![](./images/fn-diagram.png)
+
+## Block Diagram
+
+![](./images/dunno.png)
