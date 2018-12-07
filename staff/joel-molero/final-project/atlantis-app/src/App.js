@@ -86,7 +86,7 @@ class App extends Component {
                 <Home />
             </div> : <Redirect to="/" />} />
 
-            <Route path="/chat" render={() => <Chat onAddMessage={this.handleAddMessage} messages={this.state.messages} />} />
+            <Route path="/chat" render={() => logic.loggedIn ? <Chat onAddMessage={this.handleAddMessage} messages={this.state.messages} /> : <Redirect to="/" />} />
             <Route path="/r/:room" component={Room} />
 
         </div>

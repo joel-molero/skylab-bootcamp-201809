@@ -220,6 +220,20 @@ div.logout-section {
     font-family: Sans-Serif;
 
 }
+.goto-chat-home {
+    display: inline-block;
+    position: absolute;
+    top: 2%;
+    left: 90%;
+    line-height: normal;
+    color: white;
+    background-color: rgb(133, 23, 23);
+    cursor: pointer;
+    padding: 10px 13px;
+    text-decoration: none;
+    font-family: Sans-Serif;
+
+}
 
 .chat-form {
     background-color: rgb(70, 66, 66);

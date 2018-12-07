@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Home = props =>
   <div className="home">
+    <Link className="goto-chat-home" to={ '/chat' }>Chat</Link>
     <div>
       <h1 itemProp="headline">Atlantis Video Room App</h1>
       <p>Please enter a room name.</p>
