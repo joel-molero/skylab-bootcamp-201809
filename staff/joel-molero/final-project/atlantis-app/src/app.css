@@ -75,6 +75,19 @@ button.send-chat {
     text-decoration: none;
     margin-left:10px
 }
+button.primary-button-access {
+    position: relative;
+    top: -85px;
+    padding: 15px 17px 39px 17px;
+    border-radius: 5px;
+    font-size: 1.3em;
+    font-family: Sans-Serif;
+    text-justify: center;
+    color:white;
+    background-color: rgb(71, 107, 173);
+    text-decoration: none;
+    margin-left:10px
+}
 a.go-back {
     padding: 10px 10px 10px 13px;
     border-radius: 5px;
@@ -158,6 +171,10 @@ div.input-w-buttons {
     margin: 0 auto;
 
 }
+div.request-message {
+    padding: 10px;
+    background-color: white 
+}
 input {
     border: 2px;
     border-bottom: solid 2px #4c4c4f;
@@ -181,10 +198,27 @@ div.auth-wrapper {
     font-family: Sans-Serif;
 }
 div.chat-wrapper {
+    background: linear-gradient(to bottom, #ffffff 27%,#595959 100%);
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+div.logout-section {
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+}
+.goto-chat {
+    display: inline-block;
+    line-height: normal;
+    color: white;
+    background-color: rgb(133, 23, 23);
+    cursor: pointer;
+    padding: 10px 13px;
+    text-decoration: none;
+    font-family: Sans-Serif;
+
 }
 
 .chat-form {
@@ -196,9 +230,29 @@ div.chat-wrapper {
     font-size: 1em;
     text-align: center;
     min-height: 300px;
+    max-height: 500px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    flex-direction: column;
+    border: 3px white solid;
+}
+.input-send-chat {
+    background-color: #ddd;
+    position: relative;
+    padding: 0.2em 2em 0.2em 2em;
+    left: 45%;
+    top: 65%;
+    transform: translateX(-50%);
+}
+.new-message{
+    background-color: #CCCCCC;
+    color: black;
+    padding: 10px;
+    margin-top:5px;
+    margin-bottom: 5px;
+    margin-right: 50px;
+    border-radius: 20px;
 }
 @media(max-width: 1024px) {
     body,
@@ -371,11 +425,15 @@ button:focus {
     cursor: pointer;
     max-height: none
 }
-.call-exit-button:hover,
-.hangup-button:hover,
+
 .audio-button-true:hover,
+.video-button-true:hover {
+    box-shadow: .4ex .4ex 3em #666;
+    background: rgb(122, 247, 64)
+}
+.hangup-button:hover,
 .audio-button-false:hover,
-.video-button-true:hover,
+.call-exit-button:hover,
 .video-button-false:hover {
     box-shadow: .4ex .4ex 3em #666;
     background: rgb(247, 64, 64)

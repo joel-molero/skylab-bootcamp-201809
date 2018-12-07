@@ -8,6 +8,9 @@ import Landing from './components/Landing'
 import logic from './logic'
 import { Route, withRouter, Redirect } from 'react-router-dom'
 
+
+
+
 logic.url = process.env.REACT_APP_API_URL
 
 class App extends Component {
@@ -15,6 +18,7 @@ class App extends Component {
 
 
     componentDidMount() {
+
         this.refreshMessages()
     }
 

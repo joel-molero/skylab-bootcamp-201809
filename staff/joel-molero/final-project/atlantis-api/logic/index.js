@@ -56,9 +56,8 @@ const logic = {
     getMessages() {
 
         return (async () => {
-            const messages = await Message.find({}).lean()
-
-            debugger
+            const messages = await Message.find({}).sort('-date').limit(7).lean()
+            
 
             return messages
         })()

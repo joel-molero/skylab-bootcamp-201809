@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken')
 const bearerTokenParser = require('../utils/bearer-token-parser')
 const jwtVerifier = require('./jwt-verifier')
 const routeHandler = require('./route-handler')
-//const io = require('socket.io')
 
 const jsonBodyParser = bodyParser.json()
 
@@ -68,10 +67,10 @@ router.post('/messages', jsonBodyParser, (req, res) => {
         return logic.postMessage(message)
             .then(() => {
                 res.status(201)
-
                 res.json({
                     message: `message successfully posted`
                 })
+                
             })
     }, res)
 })
@@ -89,9 +88,9 @@ router.get('/messages', (req, res) => {
     }, res)
 })
 
-/* io.on('connection', () => {
-   
-}) */
+// io.sockets.on('connection', function(socket) {
+    
+// })
 
 
 module.exports = router
